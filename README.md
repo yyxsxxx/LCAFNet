@@ -1,13 +1,21 @@
 使用方式
-#git clone https://github.com/yyxsxxx/SCaFNet.git
-#cd SCaFNet
-#conda create -n SCaFNet python=3.8
-#conda activate SCaFNet
-#pip install pandas
-#pip install lanelet2
-#conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=12.1 -c pytorch -c nvidia
-#pip install torch_geometric==2.3.1
-#conda install pytorch-lightning==2.0.3
+git clone https://github.com/yyxsxxx/SCaFNet.git
+
+cd SCaFNet
+
+conda create -n SCaFNet python=3.8
+
+conda activate SCaFNet
+
+pip install pandas
+
+pip install lanelet2
+
+conda install pytorch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 pytorch-cuda=12.1 -c pytorch -c nvidia
+
+pip install torch_geometric==2.3.1
+
+conda install pytorch-lightning==2.0.3
 
 下载interaction和argoverse的数据集
 
