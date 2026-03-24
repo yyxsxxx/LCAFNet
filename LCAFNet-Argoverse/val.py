@@ -6,7 +6,7 @@ from pytorch_lightning.callbacks import ModelCheckpoint
 
 from datasets import ArgoverseV1Dataset
 from torch_geometric.loader import DataLoader
-from model import SCaFNet
+from model import LCAFNet
 
 from transforms import LaneRandomOcclusion
 
@@ -22,10 +22,10 @@ if __name__ == '__main__':
     parser.add_argument('--persistent_workers', type=bool, default=True)
     parser.add_argument('--devices', type=int, required=True)
     parser.add_argument('--ckpt_path', type=str, required=True)
-    SCaFNet.add_model_specific_args(parser)
+    LCAFNet.add_model_specific_args(parser)
     args = parser.parse_args()
 
-    model = SCaFNet.load_from_checkpoint(checkpoint_path=args.ckpt_path)
+    model = LCAFNet.load_from_checkpoint(checkpoint_path=args.ckpt_path)
     trainer = pl.Trainer(devices=args.devices, accelerator='gpu')
     val_dataset = ArgoverseV1Dataset(args.root, 'val', transform=LaneRandomOcclusion(0.0))
     dataloader = DataLoader(val_dataset, batch_size=args.val_batch_size, shuffle=False,num_workers=args.num_workers, pin_memory=args.pin_memory,persistent_workers=args.persistent_workers)

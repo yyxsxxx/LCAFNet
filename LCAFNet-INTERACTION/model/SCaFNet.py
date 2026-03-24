@@ -19,7 +19,7 @@ from utils import compute_angles_lengths_2D
 
 #torch.set_float32_matmul_precision('high')
 
-class SCaFNet(pl.LightningModule):
+class LCAFNet(pl.LightningModule):
 
     def __init__(self,
                  hidden_dim: int,
@@ -39,7 +39,7 @@ class SCaFNet(pl.LightningModule):
                  warmup_epochs: int,
                  T_max: int,
                  **kwargs) -> None:
-        super(SCaFNet, self).__init__()
+        super(LCAFNet, self).__init__()
         self.save_hyperparameters()
         self.hidden_dim = hidden_dim
         self.num_historical_steps = num_historical_steps
@@ -296,7 +296,7 @@ class SCaFNet(pl.LightningModule):
 
     @staticmethod
     def add_model_specific_args(parent_parser):
-        parser = parent_parser.add_argument_group('SCaFNet')
+        parser = parent_parser.add_argument_group('LCAFNet')
         parser.add_argument('--hidden_dim', type=int, default=128)
         parser.add_argument('--num_historical_steps', type=int, default=10)
         parser.add_argument('--num_future_steps', type=int, default=30)

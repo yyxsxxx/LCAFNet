@@ -5,7 +5,7 @@ from pytorch_lightning.callbacks import LearningRateMonitor
 from pytorch_lightning.callbacks import ModelCheckpoint
 
 from datamodules import ArgoverseV1DataModule
-from model import SCaFNet
+from model import LCAFNet
 
 import torch
    
@@ -29,10 +29,10 @@ if __name__ == '__main__':
     parser.add_argument('--max_epochs', type=int, default=64)
 
 
-    SCaFNet.add_model_specific_args(parser)
+    LCAFNet.add_model_specific_args(parser)
     args = parser.parse_args()
 
-    model = SCaFNet(**vars(args))
+    model = LCAFNet(**vars(args))
     datamodule = ArgoverseV1DataModule(**vars(args))
     model_checkpoint = ModelCheckpoint(monitor='val_minFDE', save_top_k=3, mode='min')
     lr_monitor = LearningRateMonitor(logging_interval='epoch')
